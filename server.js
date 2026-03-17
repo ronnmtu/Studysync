@@ -1,17 +1,18 @@
 const express = require('express');
 const path = require('path');
-
+ 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
-// Serve all static files (HTML, CSS, JS) from the "public" folder
-app.use(express.static(path.join(__dirname, 'public')));
-
+ 
+// Files are in the project root (no public/ subfolder)
+app.use(express.static(path.join(__dirname)));
+ 
 // Fallback: serve index.html for any unmatched route
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
-
+ 
 app.listen(PORT, () => {
   console.log(`StudySync running on port ${PORT}`);
 });
+ 
