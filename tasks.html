@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>StudySync – Tasks</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="studysync.css" />
+</head>
+<body data-page="tasks">
+  <div class="app">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="sidebar-header">
+        <h1 class="sidebar-logo">StudySync</h1>
+      </div>
+      <nav class="sidebar-nav" aria-label="Main">
+        <ul class="sidebar-menu">
+          <li><a href="dashboard.html">Sync Hub</a></li>
+          <li><a href="tasks.html">Tasks</a></li>
+          <li><a href="studyblocks.html">Study Blocks</a></li>
+          <li><a href="summary.html">Summary</a></li>
+          <li><a href="notifications.html">Notifications</a></li>
+          <li><a href="settings.html">Settings</a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-actions">
+        <button id="darkModeToggle" class="btn ghost">Dark Mode</button>
+        <button id="logoutBtn" class="btn ghost">Logout</button>
+      </div>
+    </aside>
+
+    <main class="dashboard-container main" tabindex="-1">
+      <header class="page-header"><h2 class="page-title">Tasks</h2></header>
+
+      <section class="card" style="margin-bottom:1rem">
+        <div style="display:flex;gap:.5rem;align-items:center;justify-content:space-between">
+          <div style="display:flex;gap:.75rem;align-items:center">
+            <button id="addTaskBtn" class="btn primary">+ Add Task</button>
+          </div>
+          <div style="display:flex;gap:.75rem;align-items:center">
+            <input id="taskSearch" type="text" placeholder="Search tasks..." style="width:260px;padding:.5rem .75rem;border-radius:8px;border:1px solid var(--border)"/>
+            <select id="priorityFilter" style="padding:.45rem .6rem;border-radius:8px;border:1px solid var(--border)">
+              <option value="all">All Priorities</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="card task-list" style="min-height:200px">
+        <ul id="taskList"><li class="empty">No tasks yet</li></ul>
+      </section>
+    </main>
+
+    <!-- add task modal hidden by default -->
+    <div id="taskModal" class="modal" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="addTaskTitle">
+        <button id="closeTaskModal" class="modal-close" aria-label="Close">×</button>
+        <h3 id="addTaskTitle">Add New Task</h3>
+        <label for="taskTitle">Task Title</label>
+        <input type="text" id="taskTitle" />
+        <label for="taskSubject">Subject</label>
+        <input type="text" id="taskSubject" />
+        <label for="taskDate">Due Date</label>
+        <input type="date" id="taskDate" />
+        <label for="taskPriority">Priority</label>
+        <select id="taskPriority">
+          <option>Low</option><option>Medium</option><option>High</option>
+        </select>
+        <div style="margin-top:.75rem">
+          <button id="saveTaskBtn" class="btn primary">Save Task</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="studysync.js"></script>
+</body>
+</html>

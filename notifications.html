@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>StudySync – Notifications</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="studysync.css" />
+</head>
+<body data-page="notifications">
+  <div class="app">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="sidebar-header"><h1 class="sidebar-logo">StudySync</h1></div>
+      <nav class="sidebar-nav" aria-label="Main">
+        <ul class="sidebar-menu">
+          <li><a href="dashboard.html">Sync Hub</a></li>
+          <li><a href="tasks.html">Tasks</a></li>
+          <li><a href="studyblocks.html">Study Blocks</a></li>
+          <li><a href="summary.html">Summary</a></li>
+          <li><a href="notifications.html">Notifications</a></li>
+          <li><a href="settings.html">Settings</a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-actions" style="margin-top:auto">
+        <button id="darkModeToggle" class="btn ghost">Dark Mode</button>
+        <button id="logoutBtn" class="btn ghost">Logout</button>
+      </div>
+    </aside>
+
+    <main class="dashboard-container main" tabindex="-1">
+      <header class="page-header"><h2 class="page-title">Notifications</h2></header>
+
+      <section class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div></div>
+          <!-- Clear All button right above the list -->
+          <div>
+            <button id="clearNotificationsBtn" class="btn ghost" onclick="clearNotifications()">Clear All</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card notifications-list" style="margin-top:1rem">
+        <ul id="notificationList"><li class="empty">No notifications yet.</li></ul>
+      </section>
+    </main>
+  </div>
+
+  <script src="studysync.js"></script>
+</body>
+</html>

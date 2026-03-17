@@ -1,0 +1,240 @@
+:root{
+  --bg: #f6f8fc;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --text: #0f1724;
+  --primary: #5b7cff;
+  --accent: #7b61ff;
+  --glass: rgba(255,255,255,0.6);
+  --shadow-sm: 0 6px 20px rgba(16,24,40,0.06);
+  --shadow-lg: 0 20px 50px rgba(16,24,40,0.08);
+  --border: #e6e9ef;
+  --success: #10b981;
+  --radius: 14px;
+  --transition: 180ms cubic-bezier(.2,.9,.2,1);
+  --sidebar-width: 260px;
+  --max-width: 1100px;
+}
+
+body.dark-mode{
+  --bg: #07122a;
+  --card: #071827;
+  --muted: #9aa6bd;
+  --text: #e6eef8;
+  --primary: #60a5fa;
+  --accent: #7dd3fc;
+  --glass: rgba(10,14,20,0.45);
+  --shadow-sm: 0 8px 30px rgba(2,6,23,0.6);
+  --shadow-lg: 0 30px 80px rgba(2,6,23,0.8);
+  --border: #142035;
+}
+
+/* Basic */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, var(--bg), color-mix(in srgb, var(--bg) 90%, #ffffff 10%));
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+}
+
+/* container */
+.container{max-width:var(--max-width);margin:0 auto;padding:0 1rem}
+
+/* Header / Home */
+.home-header,
+.app-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:1.25rem 1rem;
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), transparent);
+  position:sticky;
+  top:0;
+  z-index:60;
+}
+.logo { font-weight:800; letter-spacing:-0.02em; font-size:1.25rem; color:var(--text) }
+.home-cta a { margin-left:0.75rem; text-decoration:none; padding:.5rem .85rem; border-radius:10px; transition:var(--transition) }
+.home-cta a.primary { background: linear-gradient(90deg,var(--primary),var(--accent)); color: #fff; box-shadow: var(--shadow-sm) }
+
+/* App layout */
+.app{display:flex;min-height:100vh;}
+
+/* Sidebar */
+.sidebar{
+  width:var(--sidebar-width);
+  min-width:var(--sidebar-width);
+  background: linear-gradient(180deg, #334be0 0%, var(--primary) 100%);
+  color:#fff;
+  padding:2rem 1.25rem;
+  position:fixed;
+  left:0; top:0; bottom:0;
+  box-shadow: 6px 0 30px rgba(30,50,120,0.06);
+  z-index:50;
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+}
+.sidebar .sidebar-logo { font-size:1.6rem; font-weight:800; margin-bottom:0.6rem; letter-spacing:-0.01em; }
+.sidebar .sidebar-desc { font-size:0.85rem; opacity:0.9; margin-bottom:0.5rem; color:rgba(255,255,255,0.9) }
+
+.sidebar-nav{margin-top:0.25rem}
+.sidebar-menu{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.35rem}
+.sidebar-menu a{
+  display:flex;align-items:center;gap:.75rem;padding:.55rem .5rem;border-radius:10px;color:rgba(255,255,255,0.95);
+  text-decoration:none;font-weight:600;transition:background 140ms, transform 140ms;
+}
+.sidebar-menu a:hover{background: rgba(255,255,255,0.06); transform: translateX(4px)}
+.sidebar-menu a.active{
+  background: rgba(255,255,255,0.12);
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.06);
+  transform: none;
+}
+
+/* Sidebar footer actions */
+.sidebar-actions{margin-top:auto;display:flex;flex-direction:column;gap:0.5rem}
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; cursor:pointer; border:0; padding:.55rem .8rem; border-radius:10px; font-weight:700; transition:all var(--transition); background:transparent; color:var(--text) }
+.btn.primary { background: linear-gradient(90deg,var(--primary),var(--accent)); color:#fff; box-shadow: var(--shadow-sm); }
+.btn.ghost { background: transparent; color: rgba(255,255,255,0.95); border:1px solid rgba(255,255,255,0.06) }
+
+/* main area */
+.main { margin-left: 0; padding: 2rem; width: 100%; } /* base main, centered by container */
+.dashboard-container, .dashboard { margin-left: var(--sidebar-width); padding: 2.25rem 2rem; width: calc(100% - var(--sidebar-width)); }
+
+
+/* page header inside main */
+.page-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem }
+.page-title { font-size:1.5rem; margin:0; font-weight:800; color:var(--text) }
+
+/* Cards */
+.stats-cards{ display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin-bottom:1rem }
+.card{
+  background:var(--card); border-radius:var(--radius); padding:1.25rem; box-shadow:var(--shadow-sm); border:1px solid var(--border);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.card:hover{ transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+
+/* Timer */
+.timer-section{display:flex;flex-direction:column;gap:.75rem}
+#timerDisplay{ font-size:1.6rem; font-weight:800; padding:.6rem .85rem; border-radius:10px; background:var(--glass); border:1px solid var(--border); display:inline-block }
+
+/* forms and inputs */
+.form-card{ max-width:520px; margin:3rem auto; background:var(--card); border-radius:16px; padding:1.6rem; box-shadow:var(--shadow-sm); border:1px solid var(--border) }
+.field{ margin-bottom:1rem }
+label{ display:block; font-weight:600; margin-bottom:.4rem; color:var(--muted) }
+input[type="text"],input[type="email"],input[type="password"],input[type="date"],input[type="time"],select,textarea{
+  width:100%; padding:.7rem .8rem; border-radius:10px; border:1px solid var(--border); background:transparent; color:var(--text); transition: box-shadow var(--transition), border-color var(--transition);
+}
+input:focus,select:focus,textarea:focus{ outline:none; box-shadow: 0 8px 30px rgba(91,124,255,0.12); border-color: var(--primary) }
+
+/* form actions */
+.form-actions{ display:flex; justify-content:space-between; align-items:center; gap:1rem }
+.btn-lg{ padding:.75rem 1rem; border-radius:12px; font-weight:800 }
+
+/* home hero */
+.home-hero{ padding:3.5rem 0; text-align:center; margin-bottom:1.25rem }
+.home-hero h2{ font-size:2.4rem; margin:0 0 .5rem 0; font-weight:900; letter-spacing:-0.01em }
+.home-hero p{ color:var(--muted); margin:0 auto; max-width:720px }
+
+/* lists and modals */
+ul, ol { margin:0; padding:0; list-style:none }
+.list-item{display:flex;align-items:center;justify-content:space-between;gap:0.75rem;padding:0.55rem 0;border-bottom:1px dashed rgba(0,0,0,0.04)}
+.modal{ position: fixed; inset: 0; background: rgba(0,0,0,0.45); display: none; align-items: center; justify-content: center; z-index: 999; }
+.modal.show{ display:flex }
+.modal-content{ background: var(--card); padding: 1rem; border-radius: 12px; width: 420px; max-width: calc(100% - 32px); box-shadow: var(--shadow-lg); border: 1px solid var(--border) }
+
+/* responsive */
+@media (max-width:960px){
+  :root{ --sidebar-width: 0px }
+  .sidebar{ position:relative; width:100%; min-width:0; display:flex; flex-direction:row; gap:1rem; padding:.8rem 1rem; align-items:center; }
+  .sidebar-nav{ display:none }
+  .main, .dashboard-container { margin-left:0; width:100%; padding:1rem; }
+  .home-hero{ padding:2rem 1rem }
+}
+
+/* small helpers */
+.empty { color:var(--muted); text-align:center; padding:.8rem 0 }
+.badge{ display:inline-block; padding:.2rem .45rem; border-radius:999px; background:var(--primary); color:#fff; font-weight:700; font-size:.78rem }
+
+/* Table and axes styling additions — append to your existing CSS */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+th, td {
+  padding: 0.85rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  text-align: left;
+}
+th:last-child, td:last-child { border-right: none; }
+thead th { background: transparent; font-weight:700; color:var(--text); }
+tbody tr:hover { background: rgba(0,0,0,0.02); }
+th:last-child, td:last-child { border-right: none; }
+/* Make the chart canvas visually contained */
+/* Chart height clamp & prevent page from growing */
+.card { /* only restrict overflow for cards that contain large content like charts */
+  overflow: hidden;
+}
+
+/* Ensure the progress chart canvas stays a fixed height and responsive width */
+#progressChart {
+  display: block;
+  width: 100% !important;
+  height: 320px !important;    /* desired fixed visual height */
+  max-height: 320px !important;
+  object-fit: contain;
+}
+
+/* When Chart.js redraws, it may set its own internal pixel size — force the visible box */
+canvas#progressChart {
+  box-sizing: border-box;
+  max-width: 100%;
+  height: 320px !important;
+}
+
+/* Make the chart container comfortable on small screens */
+@media (max-width: 720px) {
+  #progressChart, canvas#progressChart { height: 220px !important; max-height:220px !important; }
+}
+
+/* If you have a wrapper, make sure it doesn't expand the page */
+.chart-wrapper {
+  width: 100%;
+  max-width: 100%;
+  height: 320px;
+  max-height: 320px;
+  overflow: hidden;
+}
+#clearNotificationsBtn {
+  background: linear-gradient(90deg,var(--primary),var(--accent));
+  color: #fff;
+  border: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: 10px;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+}
+#clearNotificationsBtn:hover { transform: translateY(-1px); filter: brightness(1.02); }
+
+/* inline form error style — append to your CSS */
+.form-error {
+  display: none;
+  margin-bottom: 0.75rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  background: #fff5f5;
+  color: #9b1c1c;
+  border: 1px solid rgba(156, 20, 20, 0.12);
+  font-weight: 700;
+}

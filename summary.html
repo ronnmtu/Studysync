@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>StudySync – Summary</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="studysync.css" />
+</head>
+<body data-page="summary">
+  <div class="app">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="sidebar-header">
+        <h1 class="sidebar-logo">StudySync</h1>
+      </div>
+      <nav class="sidebar-nav" aria-label="Main">
+        <ul class="sidebar-menu">
+          <li><a href="dashboard.html">Sync Hub</a></li>
+          <li><a href="tasks.html">Tasks</a></li>
+          <li><a href="studyblocks.html">Study Blocks</a></li>
+          <li><a href="summary.html">Summary</a></li>
+          <li><a href="notifications.html">Notifications</a></li>
+          <li><a href="settings.html">Settings</a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-actions" style="margin-top:auto">
+        <button id="darkModeToggle" class="btn ghost">Dark Mode</button>
+        <button id="logoutBtn" class="btn ghost">Logout</button>
+      </div>
+    </aside>
+
+    <main class="dashboard-container main" tabindex="-1">
+      <header class="page-header"><h2 class="page-title">Weekly Summary</h2></header>
+
+      <section class="card stats-cards" aria-label="Weekly metrics">
+        <div class="card">
+          <h3>Weekly Study Time</h3>
+          <p id="weeklyStudyTime">0 min</p>
+        </div>
+        <div class="card">
+          <h3>Total Tasks</h3>
+          <p id="weeklyTasksCompleted">0</p>
+        </div>
+        <div class="card">
+          <h3>Focus Sessions</h3>
+          <p id="weeklySessions">0</p>
+        </div>
+      </section>
+
+      <section class="card" style="min-height:260px">
+        <h3>Study Time Trend</h3>
+        <!-- Chart: JS expects #progressChart -->
+        <canvas id="progressChart" width="600" height="300" style="width:100%;height:240px"></canvas>
+      </section>
+
+      <section class="card" style="margin-top:1rem">
+        <h3>Weekly Stats Table</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Productivity</th>
+              <th>Tasks Completed</th>
+              <th>Minutes Studied</th>
+            </tr>
+          </thead>
+          <!-- JS expects tbody id="summaryTableBody" -->
+          <tbody id="summaryTableBody"></tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <script src="studysync.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>  

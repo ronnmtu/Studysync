@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>StudySync — Sign up</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="studysync.css" />
+</head>
+<body data-page="signup">
+  <header class="home-header">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between">
+      <div class="logo">StudySync</div>
+      <div class="home-cta"><a href="login.html">Login</a></div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="form-card container">
+      <h1 style="margin:0 0 .5rem 0">Create your account</h1>
+      <p style="color:var(--muted);margin:0 0 1.25rem 0">Get started with a free StudySync account</p>
+
+      <form id="signupForm">
+        <div id="signupError" class="form-error" role="alert" aria-live="assertive" tabindex="-1"></div>
+
+        <div class="field">
+          <label for="signupName">Name</label>
+          <input id="signupName" type="text" required />
+        </div>
+        <div class="field">
+          <label for="signupEmail">Email</label>
+          <input id="signupEmail" type="email" required />
+        </div>
+        <div class="field">
+          <label for="signupPassword">Password</label>
+          <input id="signupPassword" type="password" required />
+        </div>
+        <div class="field">
+          <label for="signupSubjects">Subjects (comma separated)</label>
+          <input id="signupSubjects" type="text" placeholder="Math, English, Science" />
+        </div>
+
+        <div class="form-actions" style="margin-top:.5rem">
+          <button type="submit" class="btn primary btn-lg">Sign up</button>
+          <a href="login.html" style="color:var(--muted);font-weight:700">Already have an account?</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script src="auth-validation.js"></script>
+  <script src="studysync.js"></script>
+</body>
+</html>

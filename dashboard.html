@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>StudySync – Sync Hub</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="studysync.css" />
+</head>
+<body data-page="dashboard">
+  <div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="sidebar-header">
+        <h1 class="sidebar-logo">StudySync</h1>
+      </div>
+
+      <nav class="sidebar-nav" aria-label="Main">
+        <ul class="sidebar-menu">
+          <li><a href="dashboard.html">Sync Hub</a></li>
+          <li><a href="tasks.html">Tasks</a></li>
+          <li><a href="studyblocks.html">Study Blocks</a></li>
+          <li><a href="summary.html">Summary</a></li>
+          <li><a href="notifications.html">Notifications</a></li>
+          <li><a href="settings.html">Settings</a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-actions" style="margin-top:auto">
+        <button id="darkModeToggle" class="btn ghost">Dark Mode</button>
+        <button id="logoutBtn" class="btn ghost">Logout</button>
+      </div>
+    </aside>
+
+    <!-- MAIN DASHBOARD -->
+    <main id="main" class="dashboard-container main" tabindex="-1">
+
+      <header class="page-header">
+        <h2 class="page-title">Sync Hub</h2> <!-- CHANGE THE TITLE HEADER--> 
+      </header>
+
+      <!-- TOP STATS CARDS -->
+      <section class="stats-cards" aria-label="Key metrics">
+        <div class="card">
+          <h3>Productivity</h3>
+          <p id="productivity">0%</p>
+        </div>
+        <div class="card">
+          <h3>Tasks Completed</h3>
+          <p id="taskCompletion">0%</p>
+        </div>
+        <div class="card">
+          <h3>Study Time</h3>
+          <p id="studyTime">0h 0m</p>
+        </div>
+      </section>
+
+      <!-- TIMER -->
+      <section class="timer-section card" aria-labelledby="timerHeading">
+        <h3 id="timerHeading">Focus Timer</h3>
+        <div id="timerDisplay" aria-live="polite">25:00</div>
+
+        <div class="timer-modes" role="group" aria-label="Timer modes">
+          <button data-mode="focus" class="btn small">Focus</button>
+          <button data-mode="short" class="btn small">Short Break</button>
+          <button data-mode="long" class="btn small">Long Break</button>
+        </div>
+
+        <div class="timer-controls">
+          <button id="startTimer" class="btn small">Start</button>
+          <button id="pauseTimer" class="btn small">Pause</button>
+          <!-- custom timer UI is injected by the JS -->
+        </div>
+      </section>
+
+      <!-- TODAY'S TASKS -->
+      <section class="tasks-section card" aria-labelledby="tasksHeading">
+        <div class="section-header">
+          <h3 id="tasksHeading">Today's Tasks</h3>
+          <button id="addTaskBtn" class="btn small">+ Add Task</button>
+        </div>
+
+        <div class="task-controls" style="margin-top:.6rem">
+          <input type="text" id="taskSearch" placeholder="Search tasks..." />
+          <select id="priorityFilter">
+            <option value="all">All Priorities</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
+
+        <!-- This is the element the JS populates for today's tasks -->
+        <ul id="dashboardTaskList" class="task-list" aria-live="polite" style="margin-top:1rem"></ul>
+      </section>
+
+      <!-- UPCOMING STUDY SESSIONS -->
+      <section class="upcoming-section card" aria-labelledby="upcomingHeading">
+        <h3 id="upcomingHeading">Next Study Session (24h)</h3>
+        <p id="upcomingSession">None scheduled</p>
+        <button id="addBlockBtn" class="btn small">+ Add Study Block</button>
+      </section>
+
+    </main>
+
+    <!-- ADD TASK MODAL (hidden until activated) -->
+    <div id="taskModal" class="modal" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="addTaskTitle">
+        <button id="closeTaskModal" class="modal-close" aria-label="Close">×</button>
+        <h3 id="addTaskTitle">Add New Task</h3>
+        <label for="taskTitle">Title</label>
+        <input type="text" id="taskTitle" />
+        <label for="taskSubject">Subject</label>
+        <input type="text" id="taskSubject" />
+        <label for="taskDate">Date</label>
+        <input type="date" id="taskDate" />
+        <label for="taskPriority">Priority</label>
+        <select id="taskPriority">
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+        <div style="margin-top:.6rem"><button id="saveTaskBtn" class="btn primary">Save Task</button></div>
+      </div>
+    </div>
+
+    <!-- ADD STUDY BLOCK MODAL (hidden until activated) -->
+    <div id="blockModal" class="modal" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="addBlockTitle">
+        <button id="closeBlockModal" class="modal-close" aria-label="Close">×</button>
+        <h3 id="addBlockTitle">Add Study Session</h3>
+        <label for="blockTitle">Session Name</label>
+        <input type="text" id="blockTitle" />
+        <label for="blockDate">Date</label>
+        <input type="date" id="blockDate" />
+        <label for="blockStart">Start Time</label>
+        <input type="time" id="blockStart" />
+        <label for="blockEnd">End Time</label>
+        <input type="time" id="blockEnd" />
+        <div style="margin-top:.6rem"><button id="saveBlockBtn" class="btn primary">Save Session</button></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="studysync.js"></script>
+</body>
+</html>

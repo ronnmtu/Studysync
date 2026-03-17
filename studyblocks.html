@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>StudySync – Study Blocks</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="studysync.css" />
+</head>
+<body data-page="studyblocks">
+  <div class="app">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="sidebar-header">
+        <h1 class="sidebar-logo">StudySync</h1>
+      </div>
+      <nav class="sidebar-nav" aria-label="Main">
+        <ul class="sidebar-menu">
+          <li><a href="dashboard.html">Sync Hub</a></li>
+          <li><a href="tasks.html">Tasks</a></li>
+          <li><a href="studyblocks.html">Study Blocks</a></li>
+          <li><a href="summary.html">Summary</a></li>
+          <li><a href="notifications.html">Notifications</a></li>
+          <li><a href="settings.html">Settings</a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-actions">
+        <button id="darkModeToggle" class="btn ghost">Dark Mode</button>
+        <button id="logoutBtn" class="btn ghost">Logout</button>
+      </div>
+    </aside>
+
+    <main class="dashboard-container main" tabindex="-1">
+      <header class="page-header"><h2 class="page-title">Study Blocks</h2></header>
+
+      <section class="card" style="margin-bottom:1rem">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <button id="addBlockBtn" class="btn primary">+ Add Study Block</button>
+          <input id="blockSearch" type="text" placeholder="Search study sessions..." style="width:320px;padding:.5rem .75rem;border-radius:8px;border:1px solid var(--border)"/>
+        </div>
+      </section>
+
+      <section class="card study-list" style="min-height:240px">
+        <ul id="blockList"><li class="empty">No study sessions yet</li></ul>
+      </section>
+    </main>
+
+    <div id="blockModal" class="modal" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="addBlockTitle">
+        <button id="closeBlockModal" class="modal-close" aria-label="Close">×</button>
+        <h3 id="addBlockTitle">Add New Study Session</h3>
+        <label for="blockTitle">Session Name</label>
+        <input type="text" id="blockTitle" />
+        <label for="blockDate">Date</label>
+        <input type="date" id="blockDate" />
+        <label for="blockStart">Start Time</label>
+        <input type="time" id="blockStart" />
+        <label for="blockEnd">End Time</label>
+        <input type="time" id="blockEnd" />
+        <div style="margin-top:.75rem">
+          <button id="saveBlockBtn" class="btn primary">Save Session</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="studysync.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>StudySync – Settings</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="studysync.css" />
+</head>
+<body data-page="settings">
+  <div class="app">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="sidebar-header">
+        <h1 class="sidebar-logo">StudySync</h1>
+      </div>
+      <nav class="sidebar-nav" aria-label="Main">
+        <ul class="sidebar-menu">
+          <li><a href="dashboard.html">Sync Hub</a></li>
+          <li><a href="tasks.html">Tasks</a></li>
+          <li><a href="studyblocks.html">Study Blocks</a></li>
+          <li><a href="summary.html">Summary</a></li>
+          <li><a href="notifications.html">Notifications</a></li>
+          <li><a href="settings.html">Settings</a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-actions">
+        <button id="darkModeToggle" class="btn ghost">Dark Mode</button>
+        <button id="logoutBtn" class="btn ghost">Logout</button>
+      </div>
+    </aside>
+
+    <main class="dashboard-container main" tabindex="-1">
+      <header class="page-header"><h2 class="page-title">Settings</h2></header>
+
+      <section class="card user-info">
+        <h3>Account Information</h3>
+        <form id="userInfoForm">
+          <div class="field">
+            <label for="userName">Name</label>
+            <input type="text" id="userName" name="userName" placeholder="Your Name" />
+          </div>
+          <div class="field">
+            <label for="userEmail">Email</label>
+            <input type="email" id="userEmail" name="userEmail" placeholder="your@email.com" />
+          </div>
+          <div class="field">
+            <label>Subjects</label>
+            <div id="userSubjects" class="subjects-container"></div>
+          </div>
+          
+          
+        </form>
+      </section>
+
+      <section class="card app-info" style="margin-top:1rem">
+        <h3>About StudySync</h3>
+        <p style="color:var(--muted)">Customize your experience by setting subjects and switching between light and dark modes.</p>
+      </section>
+    </main>
+  </div>
+
+  <script src="studysync.js"></script>
+</body>
+</html>

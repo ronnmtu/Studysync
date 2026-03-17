@@ -1,0 +1,46 @@
+<!-- small changes only: add inline error div and include auth-validation.js BEFORE studysync.js -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>StudySync — Login</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="studysync.css" />
+</head>
+<body data-page="login">
+  <header class="home-header">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between">
+      <div class="logo">StudySync</div>
+      <div class="home-cta"><a href="signup.html" class="primary">Get Started</a></div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="form-card container" style="max-width:520px">
+      <h1 style="margin:0 0 0.6rem 0">Welcome back</h1>
+      <p style="color:var(--muted);margin:0 0 1.25rem 0">Sign in to access your dashboard</p>
+
+      <form id="loginForm">
+        <div id="loginError" class="form-error" role="alert" aria-live="assertive" tabindex="-1"></div>
+
+        <div class="field">
+          <label for="loginEmail">Email</label>
+          <input id="loginEmail" type="email" required />
+        </div>
+        <div class="field">
+          <label for="loginPassword">Password</label>
+          <input id="loginPassword" type="password" required />
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn primary btn-lg">Login</button>
+          <a href="signup.html" style="color:var(--muted);font-weight:700">Create account</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- validation must load before the main app so it can intercept/validate -->
+  <script src="auth-validation.js"></script>
+  <script src="studysync.js"></script>
+</body>
+</html>
